@@ -1,0 +1,52 @@
+{
+  "name": "lead-intake",
+  "version": "1.0.0",
+  "description": "Lead Intake Backend API",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "check": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "keywords": [
+    "fastify",
+    "typescript",
+    "docker",
+    "aws",
+    "backend",
+    "lead-intake"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/accepts": "^5.0.4",
+    "@fastify/aws-lambda": "^6.4.0",
+    "@fastify/caching": "^9.0.3",
+    "@fastify/compress": "^9.0.0",
+    "@fastify/cors": "^11.3.0",
+    "@fastify/csrf-protection": "^8.0.0",
+    "@fastify/env": "^7.0.0",
+    "@fastify/helmet": "^13.1.0",
+    "@fastify/rate-limit": "^11.1.0",
+    "@fastify/under-pressure": "^9.1.0",
+    "fastify": "^5.10.0",
+    "fastify-plugin": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  }
+}
