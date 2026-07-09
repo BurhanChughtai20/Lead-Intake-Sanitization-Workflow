@@ -1,5 +1,6 @@
 import Fastify from "fastify";
-import envPlugin from "./config/env.js";
+
+import { registerPlugins } from "./config/index.ts";
 
 interface EnvConfig {
   PORT: number;
@@ -10,15 +11,15 @@ interface EnvConfig {
   DYNAMODB_TABLE?: string;
 }
 
+async function startServer() {
+
 const server = Fastify({
   logger: true,
 });
 
-await server.register(envPlugin);
+await registerPlugins(server);
 
-server.get("/ping", async () => {
-  return "pong\n";
-});
+await registerRoutes( server);
 
 const env = server.getEnvs() as EnvConfig;
 
@@ -27,4 +28,10 @@ await server.listen({
   host: env.HOST,
 });
 
-console.log(`🚀 Server running on ${env.HOST}:${env.PORT}`);
+server.log.info(`🚀 Server running on http://${env.HOST}:${env.PORT}`);
+};
+
+startServer().catch((err: Error|any) => {
+  console.error(err);
+  process.exit(1);
+});

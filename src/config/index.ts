@@ -16,4 +16,7 @@ export async function registerPlugins(server: FastifyInstance) {
   await server.register(rateLimitPlugin);
   await server.register(underPressurePlugin);
   await server.register(csrfPlugin);
+  await server.get("/", async () => ({ status: "OK" }));
+
+  return server;
 }
