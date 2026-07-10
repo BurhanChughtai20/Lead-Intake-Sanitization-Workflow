@@ -9,4 +9,4 @@ export async function registerRoutes(fastify: FastifyInstance) {
   for (const { plugin, prefix } of routes) {
     await fastify.register(plugin, { prefix });
   }
-}
+};

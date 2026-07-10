@@ -7,11 +7,16 @@ export default fp(async (fastify: FastifyInstance) => {
     dotenv: true,
     schema: {
       type: "object",
-      required: ["PORT", "HOST", "NODE_ENV"],
+      required: [
+        "PORT", "HOST", "NODE_ENV",
+        "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "DYNAMODB_TABLE"
+      ],
+
       properties: {
-        PORT: { type: "number", default: process.env.PORT },
-        HOST: { type: "string", default: process.env.HOST},
-        NODE_ENV: { type: "string", default: process.env.NODE_ENV },
+        API_PREFIX: { type: "string", default: "/v1" },
+        PORT: { type: "number", default: 3000 },
+        HOST: { type: "string", default: "0.0.0.0" },
+        NODE_ENV: { type: "string", default: "development" },
         AWS_REGION: { type: "string" },
         AWS_ACCESS_KEY_ID: { type: "string" },
         AWS_SECRET_ACCESS_KEY: { type: "string" },
