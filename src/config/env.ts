@@ -13,6 +13,8 @@ export default fp(async (fastify: FastifyInstance) => {
         HOST: { type: "string", default: "0.0.0.0" },
         NODE_ENV: { type: "string", default: "development" },
         AWS_REGION: { type: "string" },
+        AWS_ACCESS_KEY_ID: { type: "string" },
+        AWS_SECRET_ACCESS_KEY: { type: "string" },
         SQS_QUEUE_URL: { type: "string" },
         DYNAMODB_TABLE: { type: "string" }
       }

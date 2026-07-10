@@ -4,8 +4,8 @@ import envPlugin from "./env.ts";
 import helmetPlugin from "./helmet.ts";
 import corsPlugin from "./cors.ts";
 import compressPlugin from "./compress.ts";
-import rateLimitPlugin from "./rate-limit.ts";
-import underPressurePlugin from "./under-pressure.ts";
+import rateLimitPlugin from "./rate.limit.ts";
+import underPressurePlugin from "./under.pressure.ts";
 import csrfPlugin from "./csrf.ts";
 
 export async function registerPlugins(server: FastifyInstance) {

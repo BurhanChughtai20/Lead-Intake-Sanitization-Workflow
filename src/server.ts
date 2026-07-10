@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 
 import { registerPlugins } from "./config/index.ts";
+import { registerRoutes } from "./routes/route.ts";
 
 interface EnvConfig {
   PORT: number;
@@ -12,26 +13,24 @@ interface EnvConfig {
 }
 
 async function startServer() {
+  const server = Fastify({
+    logger: true,
+  });
 
-const server = Fastify({
-  logger: true,
-});
+  await registerPlugins(server);
+  await registerRoutes(server);
 
-await registerPlugins(server);
+  const env = server.getEnvs() as EnvConfig;
 
-await registerRoutes( server);
+  await server.listen({
+    port: env.PORT,
+    host: env.HOST,
+  });
 
-const env = server.getEnvs() as EnvConfig;
+  server.log.info(`🚀 Server running on http://${env.HOST}:${env.PORT}`);
+}
 
-await server.listen({
-  port: env.PORT,
-  host: env.HOST,
-});
-
-server.log.info(`🚀 Server running on http://${env.HOST}:${env.PORT}`);
-};
-
-startServer().catch((err: Error|any) => {
+startServer().catch((err: unknown) => {
   console.error(err);
   process.exit(1);
 });

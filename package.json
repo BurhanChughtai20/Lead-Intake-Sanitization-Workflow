@@ -1,7 +1,7 @@
 {
-  "name": "lead-intake",
+  "name": "Lead Processor",
   "version": "1.0.0",
-  "description": "Lead Intake Backend API",
+  "description": "Lead Processor Backend API",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.17.1",
@@ -30,6 +30,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1084.0",
+    "@aws-sdk/lib-dynamodb": "^3.1084.0",
     "@fastify/accepts": "^5.0.4",
     "@fastify/aws-lambda": "^6.4.0",
     "@fastify/caching": "^9.0.3",
@@ -41,7 +43,8 @@
     "@fastify/rate-limit": "^11.1.0",
     "@fastify/under-pressure": "^9.1.0",
     "fastify": "^5.10.0",
-    "fastify-plugin": "^5.0.0"
+    "fastify-plugin": "^5.0.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
