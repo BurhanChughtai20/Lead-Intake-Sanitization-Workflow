@@ -1,11 +1,14 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 
-export function createDynamoDbClient(config: {
+interface CreateDynamoDbClient{
   region: string;
   accessKeyId: string;
   secretAccessKey: string;
-}) {
+
+}
+
+export function createDynamoDbClient(config: CreateDynamoDbClient) {
   const client = new DynamoDBClient({
     region: config.region,
     credentials: {
