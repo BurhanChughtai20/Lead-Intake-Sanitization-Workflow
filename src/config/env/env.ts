@@ -9,9 +9,9 @@ export default fp(async (fastify: FastifyInstance) => {
       type: "object",
       required: ["PORT", "HOST", "NODE_ENV"],
       properties: {
-        PORT: { type: "number", default: 8080 },
-        HOST: { type: "string", default: "0.0.0.0" },
-        NODE_ENV: { type: "string", default: "development" },
+        PORT: { type: "number", default: process.env.PORT },
+        HOST: { type: "string", default: process.env.HOST},
+        NODE_ENV: { type: "string", default: process.env.NODE_ENV },
         AWS_REGION: { type: "string" },
         AWS_ACCESS_KEY_ID: { type: "string" },
         AWS_SECRET_ACCESS_KEY: { type: "string" },
