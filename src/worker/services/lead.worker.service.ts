@@ -3,9 +3,6 @@ import type { LeadDTO } from "../../schemas/index.ts";
 export async function processLead(
   lead: LeadDTO,
 ): Promise<void> {
-  console.log(
-    `Processing Lead: ${lead.leadId}`,
-  );
 
   // ==========================================
   // STEP 1

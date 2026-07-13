@@ -1,12 +1,12 @@
 import { randomUUID } from "crypto";
 import type { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 import type { CreateLeadDTO, LeadDTO } from "../schemas/index.ts"; 
-import { isBlockedEmail, sanitizeInput, sanitizeNumber } from "../utils/sanitize.utils.ts";
-import { isDuplicateLead } from "../utils/duplicates.lead.ts";
-import { saveLead } from "../services/lead.save.services.ts";
+import { saveLead } from "../services/lead.save.service.ts";
 import type { SQSClient } from "@aws-sdk/client-sqs";
 import { sendLeadToQueue } from "../services/lead.queue.service.ts";
 import type { LeadProcessResult } from "../services/lead.processor.service.ts";
+import { isBlockedEmail, sanitizeInput, sanitizeNumber } from "../services/sanitize.service.ts";
+import { isDuplicateLead } from "../services/duplicates.lead.service.ts";
 
 export class DuplicateLeadError extends Error {}
 export class BlockedEmailError extends Error {}
