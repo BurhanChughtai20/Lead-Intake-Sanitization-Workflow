@@ -9,7 +9,7 @@ export default fp(async (fastify: FastifyInstance) => {
       type: "object",
       required: [
         "PORT", "HOST", "NODE_ENV",
-        "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "DYNAMODB_TABLE"
+        "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "DYNAMODB_TABLE", "SQS_QUEUE_URL"
       ],
 
       properties: {

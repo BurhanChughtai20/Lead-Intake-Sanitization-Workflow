@@ -32,7 +32,12 @@ export default async function leadProcessorRoutes(
 
   registerPost<CreateLeadDTO>("/", async (request, reply) => {
     const input = CreateLeadSchema.parse(request.body);
-    const lead = await isLeadProcessor(input, request.server.dynamoDb);
+     const lead = await isLeadProcessor(
+    input,
+    request.server.dynamoDb,
+    request.server.sqs,
+    request.server.config.SQS_QUEUE_URL
+  );
     return reply.status(201).send({ success: true, result: lead });
   });
 }

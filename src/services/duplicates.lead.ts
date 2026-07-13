@@ -16,14 +16,3 @@ export const isDuplicateLead = async (
   const result = await dynamoDb.send(command);
   return (result.Items?.length ?? 0) > 0;
 };
-
-export const saveLead = async (
-  dynamoDb: DynamoDBDocumentClient,
-  lead: LeadDTO,
-): Promise<void> => {
-  await dynamoDb.send(new PutCommand({
-    TableName: process.env.DYNAMODB_TABLE,
-    Item: lead,
-    ConditionExpression: "attribute_not_exists(leadId)",
-  }));
-};
